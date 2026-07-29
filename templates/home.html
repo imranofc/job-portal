@@ -1,2 +1,16 @@
 {% extends 'base.html' %}
-{% block content %}<h1>Welcome to the Home Page</h1>{% endblock %}
+{% load static %}
+{% block content %}
+
+<div id="hero-section">
+    <div id="left-content">
+        <h1>Find jobs more to grow your career</h1>
+        <p>Explore thousands of job opportunities with all the information you need. It's your future. Come find it. Manage all your job application from start to finish.</p>
+        <button id="get-started-btn">Get Started</button>
+    </div>
+    <div id="right-content">
+        <img src="{% static 'img/man-with-laptop.png' %}" alt="Home Image">
+    </div>
+</div>
+
+{% endblock %}
