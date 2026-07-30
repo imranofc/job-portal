@@ -174,3 +174,30 @@
     }
 
 }
+
+/* alert message */
+
+.alert-message{
+    width:100%;
+    padding:14px 18px;
+    margin-bottom:20px;
+    background:#ffe5e5;
+    color:#c62828;
+    border:1px solid #f5b5b5;
+    border-left:5px solid #e53935;
+    border-radius:8px;
+    font-size:15px;
+    font-weight:500;
+    animation:fadeDown .3s ease;
+}
+
+@keyframes fadeDown{
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
