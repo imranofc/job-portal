@@ -1,57 +1,300 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
 #hero-section{
-    height: 90vh;
-    width: 85vw;
-    /* border: 5px solid black; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-self: center;
+    width:85%;
+    min-height:90vh;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
 }
 
 #left-content{
-    height: 98%;
-    width: 48%;
-    /* border: 5px solid red; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-#right-content{
-    height: 98%;
-    width: 48%;
-    /* border: 5px solid blue; */
-    float: right;
+    width:48%;
 }
 
 #left-content h1{
-    font-size: 50px;
+    font-size:55px;
+    line-height:1.2;
+    margin-bottom:20px;
+    color:#191919;
 }
 
-#right-content img{
-    height: 100%;
-    width: 100%;
+#left-content p{
+    font-size:18px;
+    color:#555;
+    line-height:1.8;
 }
 
 #get-started-btn{
-    background-color: #0A66C2;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
+    margin-top:30px;
+    padding:12px 28px;
+    border:none;
+    border-radius:6px;
+    background:#0A66C2;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
 }
 
 #get-started-btn:hover{
-    background-color: #004182;
+    background:#004182;
+}
+
+#right-content{
+    width:48%;
+}
+
+#right-content img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+/* ===========================
+   POST JOB
+=========================== */
+
+#post-job{
+    width:100%;
+    background:#efefef;
+    padding:70px 20px;
+    text-align:center;
+}
+
+#post-job h2{
+    font-size:34px;
+    margin-bottom:25px;
+}
+
+#post-job-btn{
+    padding:12px 30px;
+    border:2px solid #0A66C2;
+    background:transparent;
+    color:#0A66C2;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:17px;
+    transition:.3s;
+}
+
+#post-job-btn:hover{
+    background:#e6f0fb;
+    border-color:#004182;
+    color:#004182;
+}
+
+/* ===========================
+   FIND JOBS
+=========================== */
+
+#find-jobs{
+    width:85%;
+    margin:90px auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:50px;
+}
+
+#fj-left-sec{
+    width:42%;
+}
+
+#fj-left-sec h2{
+    font-size:52px;
+    font-weight:300;
+    line-height:1.3;
+}
+
+#fj-right-sec{
+    width:58%;
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.job-btn{
+    padding:12px 20px;
+    border:1px solid #777;
+    border-radius:50px;
+    background:white;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+.job-btn:hover{
+    background:#f3f2ef;
+    border-color:#000;
+}
+
+.show-more-btn{
+    padding:12px 20px;
+    border:1px solid #777;
+    border-radius:50px;
+    background:white;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:.3s;
+}
+
+.show-more-btn:hover{
+    background:#f3f2ef;
+}
+
+/* ===========================
+   LAPTOP
+=========================== */
+
+@media(max-width:1200px){
+
+    #left-content h1{
+        font-size:46px;
+    }
+
+    #fj-left-sec h2{
+        font-size:42px;
+    }
+
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media(max-width:992px){
+
+    #hero-section{
+        width:90%;
+        flex-direction:column-reverse;
+        text-align:center;
+        padding:50px 0;
+    }
+
+    #left-content,
+    #right-content{
+        width:100%;
+    }
+
+    #left-content{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    #left-content h1{
+        font-size:42px;
+    }
+
+    #left-content p{
+        max-width:700px;
+    }
+
+    #right-content img{
+        max-width:500px;
+        margin:auto;
+    }
+
+    #find-jobs{
+        width:90%;
+        flex-direction:column;
+    }
+
+    #fj-left-sec,
+    #fj-right-sec{
+        width:100%;
+    }
+
+    #fj-left-sec h2{
+        text-align:center;
+        font-size:40px;
+    }
+
+    #fj-right-sec{
+        justify-content:center;
+    }
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+    #hero-section{
+        width:95%;
+        min-height:auto;
+    }
+
+    #left-content h1{
+        font-size:34px;
+    }
+
+    #left-content p{
+        font-size:15px;
+    }
+
+    #get-started-btn{
+        width:180px;
+    }
+
+    #post-job{
+        padding:50px 15px;
+    }
+
+    #post-job h2{
+        font-size:25px;
+    }
+
+    #fj-left-sec h2{
+        font-size:32px;
+    }
+
+    .job-btn,
+    .show-more-btn{
+        width:100%;
+        justify-content:center;
+        font-size:15px;
+    }
+
+}
+
+/* ===========================
+   SMALL MOBILE
+=========================== */
+
+@media(max-width:480px){
+
+    #hero-section{
+        padding:30px 0;
+    }
+
+    #left-content h1{
+        font-size:28px;
+    }
+
+    #left-content p{
+        font-size:14px;
+    }
+
+    #get-started-btn{
+        width:100%;
+    }
+
+    #post-job h2{
+        font-size:21px;
+    }
+
+    #post-job-btn{
+        width:100%;
+    }
+
+    #fj-left-sec h2{
+        font-size:28px;
+    }
+
 }
