@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 from django.shortcuts import redirect
-from .models import Profile
+from .models import *
 from django.contrib.auth.models import User
 
 
@@ -65,3 +65,19 @@ def register(request):
         return redirect('job_seeker_dashboard')  # Redirect to the job seeker dashboard after successful registration
 
     return render(request, 'register.html')
+
+def post_job(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        location = request.POST.get('location')
+        company = request.POST.get('company')
+        apply_link = request.POST.get('apply_link')
+        category = request.POST.get('category')
+        job_type = request.POST.get('job_type')
+        apply_type = request.POST.get('apply_type')
+        job = Job(title=title, description=description, location=location, company=company, apply_link=apply_link, category_id=category, job_type_id=job_type, apply_type=apply_type)
+        job.save()
+    categories = Category.objects.all
+    job_types = JobType.objects.all()
+    return render(request, 'post-job.html', {'categories': categories, 'job_types': job_types})
