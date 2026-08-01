@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<title>JobPortal - Home</title>
+<link rel="stylesheet" href="{% static 'css/edit-job.css' %}" />
+<script src="{% static 'js/post-job.js' %}"></script>
+
+<div id="edit-job">
+    <div id="edit-job-box">
+        <h2>edit Job</h2>
+        <form method="edit">
+            {% csrf_token %}
+            <div class="input-box">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="{{ job.title }}">
+            </div>
+            <div class="input-box">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" value="{{ job.description }}"></textarea>
+            </div>
+            <div class="input-box">
+                <label for="location">Location</label>
+                <input type="text" name="location" id="location" value="{{ job.location }}">
+            </div>
+            <div class="input-box">
+                <label for="company">Company</label>
+                <input type="text" name="company" id="company" value="{{ job.compant }}">
+            </div>
+            
+            <div class="input-box">
+                <label for="job_type">Job Type</label>
+                <select name="job_type" id="job_type">
+                    {% for job_type in job_types %}
+                    <option value="{{ job_type.id }}">{{ job_type.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="input-box">
+                <label for="category">Category</label>
+                <select name="category" id="category">
+                    {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="input-box">
+                <label for="apply-type">Apply Type</label>
+                <select name="apply_type" id="apply-type">
+                    <option value="resume">Resume</option>
+                    <option value="link">Link</option>
+                </select>
+            </div>
+            <div class="input-box" id="apply-link-box">
+                <label for="apply-link">Apply Link</label>
+                <input type="url" name="apply_link" id="apply-link">
+            </div>
+            <button type="submit" class="edit-job-btn">edit Job</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

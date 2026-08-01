@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
@@ -37,5 +38,20 @@ class Job(models.Model):
     posted_date = models.DateTimeField(auto_now_add=True)
     apply_type = models.CharField(max_length=10, choices=APPLY_TYPES, default='resume')
     apply_link = models.CharField(max_length=500, null=True)
+    added_by = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    views = models.ManyToManyField(User, related_name='job_views', blank=True)
+
     def __str__(self):
         return self.title
+
+class JobApplication(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    resume = models.FileField(upload_to='resumes/')
+    applied_date = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return f"{self.name} - {self.job.title}"

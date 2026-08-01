@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<title>JobPortal - Home</title>
+<link rel="stylesheet" href="{% static 'css/cant-access.css' %}" />
+
+<div id="cant-access">
+    <div id="cant-access-box">
+        <h2>You don't have permisson to access this page.</h2>
+        <button id="dashboard-btn" class="btn">Dashboard</button>
+        <button id="logout-btn" class="btn">Logout</button>
+    </div>
+</div>
+
+{% endblock %}

@@ -26,6 +26,12 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('register/', register, name='register'),
     path('post-job/', post_job, name='post_job'),
+    path('jobs/', jobs, name='jobs'),
+    path('job/<int:id>/', job, name='job'),
+    path('employer-dashboard/', employer_dashboard, name='employer_dashboard'),
+    path('manage-job/<int:id>/', manage_job, name='manage_job'),
+    path('edit-job/<int:id>', edit_job, name='edit_job'),
+    path('access-denied', access_denied, name='access_denied'),
 ]
 
 if settings.DEBUG:

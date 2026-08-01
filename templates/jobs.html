@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<title>JobPortal - Home</title>
+<link rel="stylesheet" href="{% static 'css/jobs.css' %}" />
+
+<div id="jobs">
+    <div id="jobs-sections">
+        {% for job in jobs %}
+            <div class="job-card" onclick="window.location.href='{% url 'job' job.id %}'">
+                <h3>{{ job.title }}</h3>
+                <p><strong>Company:</strong> {{ job.company }}</p>
+                <p><strong>Location:</strong> {{ job.location }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

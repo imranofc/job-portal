@@ -1,0 +1,151 @@
+/* ==========================
+        JOBS PAGE
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f3f2ef;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* ==========================
+        MAIN SECTION
+========================== */
+
+#jobs{
+    width:100%;
+    padding:60px 20px;
+}
+
+#jobs-sections{
+    width:85%;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+/* ==========================
+        JOB CARD
+========================== */
+
+.job-card{
+    background:#fff;
+    border:1px solid #e3e3e3;
+    border-radius:12px;
+    padding:25px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.job-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    border-color:#0A66C2;
+}
+
+.job-card h3{
+    font-size:24px;
+    color:#191919;
+    margin-bottom:18px;
+}
+
+.job-card p{
+    color:#555;
+    font-size:15px;
+    margin-bottom:12px;
+    line-height:1.7;
+}
+
+.job-card strong{
+    color:#191919;
+}
+
+/* ==========================
+        BUTTON
+========================== */
+
+.view-job-btn{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    background:#0A66C2;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.view-job-btn:hover{
+    background:#004182;
+}
+
+/* ==========================
+        LAPTOP
+========================== */
+
+@media(max-width:1200px){
+
+    #jobs-sections{
+        width:90%;
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* ==========================
+        TABLET
+========================== */
+
+@media(max-width:768px){
+
+    #jobs{
+        padding:40px 15px;
+    }
+
+    #jobs-sections{
+        width:100%;
+        grid-template-columns:1fr;
+    }
+
+    .job-card{
+        padding:22px;
+    }
+
+    .job-card h3{
+        font-size:22px;
+    }
+
+}
+
+/* ==========================
+        MOBILE
+========================== */
+
+@media(max-width:480px){
+
+    .job-card{
+        padding:18px;
+    }
+
+    .job-card h3{
+        font-size:20px;
+    }
+
+    .job-card p{
+        font-size:14px;
+    }
+
+    .view-job-btn{
+        font-size:15px;
+    }
+
+}

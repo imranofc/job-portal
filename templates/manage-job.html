@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<title>Manage Job</title>
+
+<link rel="stylesheet" href="{% static 'css/manage-job.css' %}">
+
+<div id="manage-job">
+
+    <div class="job-card">
+
+        <div class="job-header">
+
+            <div>
+                <h2>{{ job.title }}</h2>
+
+                <p>{{ job.company }}</p>
+
+                <span>{{ job.location }} • {{ job.job_type }}</span>
+            </div>
+
+            <div class="status">
+                Active
+            </div>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat-box">
+                <h3>{{ views_count }}</h3>
+                <p>Views</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>{{ applications_count }}</h3>
+                <p>Applications</p>
+            </div>
+
+        </div>
+
+        <div class="job-info">
+
+            <div>
+                <strong>Posted</strong>
+                <p>{{ job.posted_date }}</p>
+            </div>
+
+            <div>
+                <strong>Category</strong>
+                <p>{{ job.category }}</p>
+            </div>
+
+            <div>
+                <strong>Apply Type</strong>
+                <p>{{ job.apply_type }}</p>
+            </div>
+
+        </div>
+
+        <div class="actions">
+
+            <button class="edit-btn">
+                Edit Job
+            </button>
+
+            <button class="pause-btn">
+                Pause Job
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
