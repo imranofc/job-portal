@@ -27,15 +27,10 @@
     <h2>Find the right job or internship for you</h2>
   </div>
   <div id="fj-right-sec">
-    <button class="job-btn">Engineering</button>
-    <button class="job-btn">Business Development</button>
-    <button class="job-btn">Finance</button>
-    <button class="job-btn">Administrative Assistant</button>
-    <button class="job-btn">Retail Associate</button>
-    <button class="job-btn">Customer Service</button>
-    <button class="job-btn">Operations</button>
-    <button class="job-btn">Information Technology</button>
-    <button class="show-more-btn">Show more <i class="fa-solid fa-chevron-down"></i>
+    {% for category in categories %}
+    <button class="job-btn" onclick="window.location.href='/jobs/?category={{ category.name|urlencode }}'">{{category.name}}</button>
+    {% endfor %}
+    <button class="show-more-btn" onclick="window.location.href='/jobs/'">Show more <i class="fa-solid fa-chevron-down"></i>
     </button>
   </div>
 </div>

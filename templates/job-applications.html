@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/job-views.css' %}" />
+
+<div class="container">
+
+<h2>Applications</h2>
+
+{% if applications %}
+
+    {% for application in applications %}
+
+    <div class="card">
+
+        <h3>{{ application.name }}</h3>
+
+        <p>Email : {{ application.email }}</p>
+
+        <p>Phone : {{ application.phone }}</p>
+
+        <p>Applied : {{ application.applied_date }}</p>
+
+        <a href="{{ application.resume.url }}" target="_blank">
+            Download Resume
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+<p>No applications received.</p>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

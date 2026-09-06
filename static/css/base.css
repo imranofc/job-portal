@@ -1,48 +1,139 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 header{
-    width: 85vw;
-    margin: 20px 0;
-    display: flex;
-    justify-self: center;
-    justify-content: space-between;
-    align-items: center;
+    width:85vw;
+    margin:20px auto;
+    padding-bottom:10px;
+    border-bottom:1px solid #ccc;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:relative;
 }
 
+#logo img{
+    max-width:170px;
+}
+
+/* Navigation */
+
 nav ul{
-    width: 350px;
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    align-items: center;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    list-style:none;
 }
 
 nav ul li a{
-    text-decoration: none;
-    color: black;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    text-decoration:none;
+    color:#000;
+    font-size:13px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    transition:.3s;
+}
+
+nav ul li a i{
+    font-size:18px;
+    margin-bottom:3px;
 }
 
 nav ul li a:hover{
-    color: #0A66C2;
+    color:#0A66C2;
 }
 
 nav ul li:last-child a{
-    background-color: #0A66C2;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
+    background:#0A66C2;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:5px;
+    font-size:15px;
 }
 
 nav ul li:last-child a:hover{
-    background-color: #004182;
+    background:#004182;
+}
+
+/* Hamburger */
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* ---------------------- */
+/* Hide Icons */
+/* ---------------------- */
+
+@media(max-width:900px){
+
+    nav ul li a i{
+        display:none;
+    }
+
+    nav ul li a{
+        font-size:14px;
+    }
+
+}
+
+/* ---------------------- */
+/* Mobile */
+/* ---------------------- */
+
+@media(max-width:700px){
+
+    header{
+        width:95%;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    nav{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        display:none;
+        background:#fff;
+        border:1px solid #ddd;
+        border-radius:8px;
+        box-shadow:0 5px 15px rgba(0,0,0,.1);
+    }
+
+    nav.active{
+        display:block;
+    }
+
+    nav ul{
+        flex-direction:column;
+        gap:0;
+    }
+
+    nav ul li{
+        width:100%;
+    }
+
+    nav ul li a{
+        padding:15px;
+        align-items:flex-start;
+        border-bottom:1px solid #eee;
+    }
+
+    nav ul li:last-child a{
+        width:90%;
+        margin:15px auto;
+        justify-content:center;
+        align-items:center;
+    }
+
 }

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/job-views.css' %}" />
+
+<div class="container">
+
+    <h2>People who viewed this job</h2>
+
+    {% if viewers %}
+
+        {% for user in viewers %}
+
+        <div class="card">
+
+            <h3>{{ user.first_name }}</h3>
+
+            <p>{{ user.email }}</p>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No views yet.</p>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

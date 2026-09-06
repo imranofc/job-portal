@@ -40,6 +40,7 @@ class Job(models.Model):
     apply_link = models.CharField(max_length=500, null=True)
     added_by = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     views = models.ManyToManyField(User, related_name='job_views', blank=True)
+    status = models.CharField(max_length=10, choices=[('active', 'Active'), ('inactive', 'Inactive')], default='active')
 
     def __str__(self):
         return self.title

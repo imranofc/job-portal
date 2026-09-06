@@ -5,7 +5,7 @@
 }
 
 body{
-    background:#f3f2ef;
+    background: white;
     font-family:Arial,Helvetica,sans-serif;
 }
 
@@ -60,6 +60,14 @@ body{
     font-weight:bold;
 }
 
+.status.inactive{
+    padding:8px 20px;
+    border-radius:30px;
+    background:#e8f5e9;
+    color:#e9593d;
+    font-weight:bold;
+}
+
 /* ==================== Stats ==================== */
 
 .stats{
@@ -85,6 +93,22 @@ body{
 
 .stat-box p{
     color:#666;
+}
+
+.stat-box{
+    background:#f8f9fb;
+    border:1px solid #e6e6e6;
+    border-radius:10px;
+    padding:25px;
+    text-align:center;
+    text-decoration:none;
+    color:inherit;
+    transition:.3s;
+}
+
+.stat-box:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
 }
 
 /* ==================== Job Info ==================== */

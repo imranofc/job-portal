@@ -1,17 +1,143 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<title>JobPortal - Home</title>
-<link rel="stylesheet" href="{% static 'css/jobs.css' %}" />
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<title>JobPortal - Jobs</title>
+
+<link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- =========================
+        FILTER BUTTON
+========================= -->
+
+<div id="filter-toggle">
+    <i class="fa-solid fa-filter"></i>
+    <span>Filter</span>
+</div>
+
+<!-- =========================
+        FILTER
+========================= -->
+
+<div id="filter">
+
+    <div id="filter-close">
+        <i class="fa-solid fa-circle-xmark"></i>
+    </div>
+
+    <form method="GET" action="{% url 'jobs' %}" class="filter-form">
+
+        <div class="filter-group">
+            <label>Location</label>
+            <input type="text"
+                   name="location"
+                   placeholder="Enter Location">
+        </div>
+
+        <div class="filter-group">
+
+            <label>Job Type</label>
+
+            <select name="job_type">
+
+                <option value="">All Jobs</option>
+                {% for job_type in job_types %}
+                <option value="{{job_type.name}}"
+                    {% if request.GET.job_type == job_type.name %}selected{% endif %}>
+                    {{job_type.name}}
+                </option>
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="filter-group">
+
+            <label>Category</label>
+
+            <select name="category">
+
+                <option value="">All Categories</option>
+
+                {% for category in categories %}
+
+                <option value="{{ category.name }}"
+                    {% if request.GET.category == category.name %}
+                    selected
+                    {% endif %}>
+                    {{ category.name }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="filter-btn">
+            <button type="submit">Apply Filters</button>
+        </div>
+
+    </form>
+
+</div>
+
+<!-- =========================
+        JOBS
+========================= -->
 
 <div id="jobs">
+
     <div id="jobs-sections">
+
         {% for job in jobs %}
-            <div class="job-card" onclick="window.location.href='{% url 'job' job.id %}'">
-                <h3>{{ job.title }}</h3>
-                <p><strong>Company:</strong> {{ job.company }}</p>
-                <p><strong>Location:</strong> {{ job.location }}</p>
-            </div>
+
+        <div class="job-card"
+             onclick="window.location.href='{% url 'job' job.id %}'">
+
+            <h3>{{ job.title }}</h3>
+
+            <p><strong>Company:</strong> {{ job.company }}</p>
+
+            <p><strong>Location:</strong> {{ job.location }}</p>
+
+            <p><strong>Category:</strong> {{ job.category }}</p>
+
+        </div>
+
+        {% empty %}
+
+        <h2>No Jobs Found.</h2>
+
         {% endfor %}
+
     </div>
+
 </div>
+
+<script>
+
+const filterToggle=document.getElementById("filter-toggle");
+const filter=document.getElementById("filter");
+const filterClose=document.getElementById("filter-close");
+
+filterToggle.addEventListener("click",function(){
+
+    filter.classList.add("active");
+    filterToggle.style.display="none";
+
+});
+
+filterClose.addEventListener("click",function(){
+
+    filter.classList.remove("active");
+    filterToggle.style.display="flex";
+
+});
+
+</script>
 
 {% endblock %}

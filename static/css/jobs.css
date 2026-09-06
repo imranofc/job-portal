@@ -1,5 +1,5 @@
 /* ==========================
-        JOBS PAGE
+        RESET
 ========================== */
 
 *{
@@ -9,23 +9,140 @@
 }
 
 body{
-    background:#f3f2ef;
-    font-family:Arial, Helvetica, sans-serif;
+    background: white;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 /* ==========================
-        MAIN SECTION
+        FILTER BUTTON
+========================== */
+
+#filter-toggle{
+    display:none;
+    width:130px;
+    margin:40px 20px 10px auto;
+    padding:14px 20px;
+    background:#0a66c2;
+    color:#fff;
+    border-radius:10px;
+    cursor:pointer;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-size:16px;
+    font-weight:600;
+}
+
+#filter-toggle:hover{
+    background:#004182;
+}
+
+#filter-toggle i{
+    font-size:18px;
+}
+
+/* ==========================
+        FILTER
+========================== */
+
+#filter{
+    width:85%;
+    margin:20px auto;
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+/* ==========================
+        CLOSE BUTTON
+========================== */
+
+#filter-close{
+    display:none;
+    justify-content:flex-end;
+    margin-bottom:20px;
+    cursor:pointer;
+}
+
+#filter-close i{
+    font-size:30px;
+    color:#0a66c2;
+    transition:.3s;
+}
+
+#filter-close i:hover{
+    color:#004182;
+}
+
+/* ==========================
+        FILTER FORM
+========================== */
+
+.filter-form{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    align-items:end;
+}
+
+.filter-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.filter-group label{
+    margin-bottom:8px;
+    font-weight:600;
+    color:#333;
+}
+
+.filter-group input,
+.filter-group select{
+    width:100%;
+    height:45px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    padding:0 12px;
+    outline:none;
+    transition:.3s;
+}
+
+.filter-group input:focus,
+.filter-group select:focus{
+    border-color:#0a66c2;
+    box-shadow:0 0 6px rgba(10,102,194,.2);
+}
+
+.filter-btn button{
+    width:100%;
+    height:45px;
+    border:none;
+    border-radius:8px;
+    background:#0a66c2;
+    color:#fff;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.filter-btn button:hover{
+    background:#004182;
+}
+
+/* ==========================
+        JOBS
 ========================== */
 
 #jobs{
     width:100%;
-    padding:60px 20px;
+    padding:40px 20px 60px;
 }
 
 #jobs-sections{
     width:85%;
     margin:auto;
-
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:25px;
@@ -37,55 +154,33 @@ body{
 
 .job-card{
     background:#fff;
-    border:1px solid #e3e3e3;
+    border:1px solid #ddd;
     border-radius:12px;
     padding:25px;
-    transition:.3s;
     cursor:pointer;
+    transition:.3s;
 }
 
 .job-card:hover{
     transform:translateY(-6px);
+    border-color:#0a66c2;
     box-shadow:0 12px 30px rgba(0,0,0,.08);
-    border-color:#0A66C2;
 }
 
 .job-card h3{
     font-size:24px;
-    color:#191919;
     margin-bottom:18px;
+    color:#222;
 }
 
 .job-card p{
     color:#555;
-    font-size:15px;
     margin-bottom:12px;
     line-height:1.7;
 }
 
 .job-card strong{
-    color:#191919;
-}
-
-/* ==========================
-        BUTTON
-========================== */
-
-.view-job-btn{
-    width:100%;
-    margin-top:20px;
-    padding:12px;
-    border:none;
-    border-radius:6px;
-    background:#0A66C2;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.view-job-btn:hover{
-    background:#004182;
+    color:#111;
 }
 
 /* ==========================
@@ -93,6 +188,10 @@ body{
 ========================== */
 
 @media(max-width:1200px){
+
+    .filter-form{
+        grid-template-columns:repeat(2,1fr);
+    }
 
     #jobs-sections{
         width:90%;
@@ -102,26 +201,40 @@ body{
 }
 
 /* ==========================
-        TABLET
+        MOBILE & TABLET
 ========================== */
 
 @media(max-width:768px){
 
+    #filter-toggle{
+        display:flex;
+    }
+
+    #filter{
+        display:none;
+        width:95%;
+        margin-top:10px;
+    }
+
+    #filter.active{
+        display:block;
+    }
+
+    #filter.active #filter-close{
+        display:flex;
+    }
+
+    .filter-form{
+        grid-template-columns:1fr;
+    }
+
     #jobs{
-        padding:40px 15px;
+        padding:30px 15px;
     }
 
     #jobs-sections{
         width:100%;
         grid-template-columns:1fr;
-    }
-
-    .job-card{
-        padding:22px;
-    }
-
-    .job-card h3{
-        font-size:22px;
     }
 
 }
@@ -131,6 +244,22 @@ body{
 ========================== */
 
 @media(max-width:480px){
+
+    #filter-toggle{
+        font-size:15px;
+        padding:12px 16px;
+    }
+
+    .filter-group input,
+    .filter-group select{
+        height:42px;
+        font-size:14px;
+    }
+
+    .filter-btn button{
+        height:42px;
+        font-size:14px;
+    }
 
     .job-card{
         padding:18px;
@@ -142,10 +271,6 @@ body{
 
     .job-card p{
         font-size:14px;
-    }
-
-    .view-job-btn{
-        font-size:15px;
     }
 
 }

@@ -1,8 +1,8 @@
-#post-job{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+#post-job {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #post-job-box{
@@ -70,9 +70,9 @@
     box-shadow:0 0 0 3px rgba(10,102,194,.12);
 }
 
-/* ===========================
+/* 
    BUTTON
-=========================== */
+ */
 
 .post-job-btn{
     width:100px;
@@ -94,4 +94,51 @@
 
 .post-job-btn:active{
     transform:scale(.98);
+}
+
+.messages {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 15px;
+}
+
+.message {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 18px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Success */
+.message.success {
+    background: #e8f5e9;
+    color: #1b5e20;
+    border: 1px solid #a5d6a7;
+}
+
+/* Error */
+.message.error {
+    background: #ffebee;
+    color: #b71c1c;
+    border: 1px solid #ef9a9a;
+}
+
+/* Warning */
+.message.warning {
+    background: #fff8e1;
+    color: #e65100;
+    border: 1px solid #ffcc80;
+}
+
+/* Info */
+.message.info {
+    background: #e3f2fd;
+    color: #0d47a1;
+    border: 1px solid #90caf9;
 }

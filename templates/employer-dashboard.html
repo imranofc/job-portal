@@ -11,7 +11,7 @@
 <div id="jobs">
     <div id="jobs-sections">
         {% for job in jobs %}
-            <div class="job-card" onclick="window.location.href='{% url 'job' job.id %}'">
+            <div class="job-card" onclick="window.location.href='{% url 'manage_job' job.id %}'">
                 <h3>{{ job.title }}</h3>
                 <p><strong>Company:</strong> {{ job.company }}</p>
                 <p><strong>Location:</strong> {{ job.location }}</p>

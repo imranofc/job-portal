@@ -32,6 +32,9 @@ urlpatterns = [
     path('manage-job/<int:id>/', manage_job, name='manage_job'),
     path('edit-job/<int:id>', edit_job, name='edit_job'),
     path('access-denied', access_denied, name='access_denied'),
+    path('logout/', logout, name='logout'),
+    path('job/<int:id>/views/', job_views, name='job_views'),
+    path('job/<int:id>/applications/', job_applications, name='job_applications'),
 ]
 
 if settings.DEBUG:

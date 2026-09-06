@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
 </head>
 <body>
 
@@ -17,21 +16,48 @@
     <div id="logo">
         <img src="{% static 'img/logo.png' %}" alt="JobPortal Logo">
     </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
     <nav>
         <ul>
-            <li><a href="#"><i class="fa-solid fa-briefcase" style="font-size: 18px;"></i>Jobs</a></li>
+            {% if request.user.profile.role != 'employer' %}
+            <li><a href="/jobs"><i class="fa-solid fa-briefcase" style="font-size: 18px;"></i>Jobs</a></li>
             <li><a href="#"><i class="fa-brands fa-app-store-ios" style="font-size: 18px;"></i>Get the app</a></li>
+            {% else %}
+            <li><a href="/employer-dashboard"><i class="fa-solid fa-house" style="font-size: 18px;"></i>Dashboard</a></li>
+            <li><a href="/post-job"><i class="fa-solid fa-arrow-up-from-bracket" style="font-size: 18px;"></i>Post Job</a></li>
+            {% endif %}
             <li><a href="#"><i class="fa-solid fa-envelope" style="font-size: 18px;"></i>Contact Us</a></li>
-            <li><a href="#">Login</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="/logout"><i class="fa-solid fa-right-from-bracket" style="font-size: 18px;"></i>Logout</a></li>
+            {% else %}
+            <li><a href="/login">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
 </header>
 
+{% block content %}{% endblock %}
+end block content
 
+<script src="{% static 'js/base.js' %}"></script>
 
+<script>
+function toggleMenu() {
+    const icon = document.querySelector(".menu-btn i");
 
+    if (icon.classList.contains("fa-bars")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+    } else {
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+    }
+}
+</script>
 
-    {% block content %}{% endblock %}
-    end block content
 </body>
 </html>
