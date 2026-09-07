@@ -1,42 +1,39 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
-
-<link rel="stylesheet" href="{% static 'css/job-views.css' %}" />
-
-<div class="container">
-
-<h2>Applications</h2>
-
-{% if applications %}
-
-    {% for application in applications %}
-
-    <div class="card">
-
-        <h3>{{ application.name }}</h3>
-
-        <p>Email : {{ application.email }}</p>
-
-        <p>Phone : {{ application.phone }}</p>
-
-        <p>Applied : {{ application.applied_date }}</p>
-
-        <a href="{{ application.resume.url }}" target="_blank">
-            Download Resume
-        </a>
-
+{% extends 'base.html' %}{% load static %}{% block head %}<title>
+  JobPortal - Applications</title
+><link rel="stylesheet" href="{% static 'css/job-views.css' %}" />{% endblock
+%}{% block content %}
+<section id="data-page">
+  <div class="data-head">
+    <span class="eyebrow">Candidate activity</span>
+    <h1>Applications</h1>
+    <p>Review people who applied to this position.</p>
+  </div>
+  <div class="data-list">
+    {% if applications %}{% for application in applications %}
+    <article class="data-card">
+      <div class="person">
+        <div class="avatar">{{ application.name|first|upper }}</div>
+        <div>
+          <h2>{{ application.name }}</h2>
+          <p>{{ application.email }} · {{ application.phone }}</p>
+        </div>
+      </div>
+      <div class="data-meta">
+        <span>Applied {{ application.applied_date }}</span
+        ><a
+          class="resume-link"
+          href="{{ application.resume.url }}"
+          target="_blank"
+          ><i class="fa-solid fa-file-arrow-down"></i> Resume</a
+        >
+      </div>
+    </article>
+    {% endfor %}{% else %}
+    <div class="empty-data">
+      <i class="fa-solid fa-file-circle-xmark"></i>
+      <p>No applications received.</p>
     </div>
-
-    {% endfor %}
-
-{% else %}
-
-<p>No applications received.</p>
-
-{% endif %}
-
-</div>
-
+    {% endif %}
+  </div>
+</section>
 {% endblock %}

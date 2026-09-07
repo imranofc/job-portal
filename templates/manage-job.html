@@ -1,24 +1,15 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-
-<title>Manage Job</title>
-
-<link rel="stylesheet" href="{% static 'css/manage-job.css' %}" />
-<link rel="stylesheet" href="{% static 'css/em-dash.css' %}" />
-<script defer src="{% static 'js/manage-job.js' %}"></script>
-
-<div id="manage-job">
-  <div class="job-card">
-    <div class="job-header">
-      <div>
-        <h2>{{ job.title }}</h2>
-
+{% extends 'base.html' %}{% load static %}{% block head %}<title>
+  JobPortal - Manage Job</title
+><link rel="stylesheet" href="{% static 'css/manage-job.css' %}" />{% endblock
+%}{% block content %}
+<section id="manage-job">
+  <div class="manage-shell">
+    <div class="manage-header">
+      <div class="manage-title">
+        <span class="eyebrow">Manage opportunity</span>
+        <h1>{{ job.title }}</h1>
         <p>{{ job.company }}</p>
-
-        <span>{{ job.location }} • {{ job.job_type }}</span>
-
-        <br />
-
-        <span>{{ job.description }}</span>
+        <span>{{ job.location }} · {{ job.job_type }}</span>
       </div>
       {% if job.status == 'active' %}
       <div class="status">Active</div>
@@ -26,48 +17,43 @@
       <div class="status inactive">Inactive</div>
       {% endif %}
     </div>
-
-    <div class="stats">
-      <a href="{% url 'job_views' job.id %}" class="stat-box">
-        <h3>{{ views_count }}</h3>
-        <p>Views</p>
-      </a>
-
-      <a href="{% url 'job_applications' job.id %}" class="stat-box">
-        <h3>{{ applications_count }}</h3>
-        <p>Applications</p>
-      </a>
-    </div>
-
-    <div class="job-info">
-      <div>
-        <strong>Posted</strong>
-        <p>{{ job.posted_date }}</p>
+    <div class="manage-content">
+      <p class="description">{{ job.description }}</p>
+      <div class="stats">
+        <a href="{% url 'job_views' job.id %}" class="stat-box"
+          ><h3>{{ views_count }}</h3>
+          <p>Views</p></a
+        ><a href="{% url 'job_applications' job.id %}" class="stat-box"
+          ><h3>{{ applications_count }}</h3>
+          <p>Applications</p></a
+        >
       </div>
-
-      <div>
-        <strong>Category</strong>
-        <p>{{ job.category }}</p>
+      <div class="job-info">
+        <div>
+          <strong>Posted</strong>
+          <p>{{ job.posted_date }}</p>
+        </div>
+        <div>
+          <strong>Category</strong>
+          <p>{{ job.category }}</p>
+        </div>
+        <div>
+          <strong>Apply Type</strong>
+          <p>{{ job.apply_type }}</p>
+        </div>
       </div>
-
-      <div>
-        <strong>Apply Type</strong>
-        <p>{{ job.apply_type }}</p>
+      {% if job.status == 'active' %}
+      <div class="actions">
+        <button
+          class="edit-btn"
+          onclick="window.location.href='{% url 'edit_job' job.id %}'"
+        >
+          Edit Job <i class="fa-solid fa-pen"></i></button
+        ><button class="pause-btn">Pause Job</button>
       </div>
+      {% endif %}
     </div>
-    {% if job.status == 'active' %}
-
-    <div class="actions">
-      <button
-        class="edit-btn"
-        onclick="window.location.href='{% url 'edit_job' job.id %}'"
-      >
-        Edit Job
-      </button>
-      <button class="pause-btn">Pause Job</button>
-    </div>
-    {% endif %}
   </div>
-</div>
-
+</section>
+<script defer src="{% static 'js/manage-job.js' %}"></script>
 {% endblock %}

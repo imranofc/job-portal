@@ -1,34 +1,110 @@
-.container{
-    max-width:900px;
-    margin:50px auto;
-    padding:20px;
+#data-page {
+  width: min(900px, 92%);
+  margin: auto;
+  padding: 55px 0;
 }
-
-.container h2{
-    margin-bottom:25px;
+.data-head {
+  margin-bottom: 25px;
 }
-
-.card{
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:10px;
-    padding:20px;
-    margin-bottom:15px;
+.data-head .eyebrow {
+  color: #0a66c2;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
-
-.card h3{
-    margin-bottom:10px;
+.data-head h1 {
+  font-size: 32px;
+  letter-spacing: -0.04em;
+  margin: 6px 0;
 }
-
-.card p{
-    margin:5px 0;
-    color:#555;
+.data-head p {
+  color: #94a3b8;
+  font-size: 12px;
 }
-
-.card a{
-    display:inline-block;
-    margin-top:10px;
-    text-decoration:none;
-    color:#0A66C2;
-    font-weight:bold;
+.data-list {
+  display: grid;
+  gap: 12px;
+}
+.data-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 19px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.person {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #eff6ff;
+  color: #0a66c2;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+.person h2 {
+  font-size: 14px;
+}
+.person p {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 3px;
+}
+.data-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+  color: #94a3b8;
+  font-size: 10px;
+}
+.resume-link {
+  color: #0a66c2;
+  text-decoration: none;
+  font-weight: 800;
+  background: #eff6ff;
+  padding: 8px 11px;
+  border-radius: 8px;
+}
+.empty-data {
+  text-align: center;
+  background: #fff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+  padding: 55px 20px;
+  color: #94a3b8;
+  font-size: 12px;
+}
+.empty-data i {
+  font-size: 26px;
+  color: #93c5fd;
+  margin-bottom: 12px;
+}
+@media (max-width: 600px) {
+  #data-page {
+    padding: 35px 0;
+  }
+  .data-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .data-meta {
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 10px;
+    border-top: 1px solid #edf2f7;
+  }
+  .resume-link {
+    width: 100%;
+    text-align: center;
+  }
 }

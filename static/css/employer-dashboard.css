@@ -1,151 +1,129 @@
-/* ==========================
-        JOBS PAGE
-========================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+#jobs {
+  width: min(1180px, 92%);
+  margin: auto;
+  padding: 55px 0;
 }
-
-body{
-    background: white;
-    font-family:Arial, Helvetica, sans-serif;
+.dashboard-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 30px;
 }
-
-/* ==========================
-        MAIN SECTION
-========================== */
-
-#jobs{
-    width:100%;
-    padding:60px 20px;
+.dashboard-head h1 {
+  font-size: 38px;
+  letter-spacing: -0.04em;
+  margin: 6px 0;
 }
-
-#jobs-sections{
-    width:85%;
-    margin:auto;
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
+.dashboard-head p {
+  font-size: 13px;
+  color: #64748b;
 }
-
-/* ==========================
-        JOB CARD
-========================== */
-
-.job-card{
-    background:#fff;
-    border:1px solid #e3e3e3;
-    border-radius:12px;
-    padding:25px;
-    transition:.3s;
-    cursor:pointer;
+.dashboard-action {
+  background: #0a66c2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 12px 17px;
+  font-size: 12px;
+  font-weight: 800;
 }
-
-.job-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
-    border-color:#0A66C2;
+.dashboard-action:hover {
+  background: #004182;
 }
-
-.job-card h3{
-    font-size:24px;
-    color:#191919;
-    margin-bottom:18px;
+.jobs-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
-
-.job-card p{
-    color:#555;
-    font-size:15px;
-    margin-bottom:12px;
-    line-height:1.7;
+.dashboard-job {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.2s;
 }
-
-.job-card strong{
-    color:#191919;
+.dashboard-job:hover {
+  transform: translateY(-4px);
+  border-color: #9fc6ec;
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
 }
-
-/* ==========================
-        BUTTON
-========================== */
-
-.view-job-btn{
-    width:100%;
-    margin-top:20px;
-    padding:12px;
-    border:none;
-    border-radius:6px;
-    background:#0A66C2;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-    transition:.3s;
+.dash-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: #eff6ff;
+  color: #0a66c2;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
 }
-
-.view-job-btn:hover{
-    background:#004182;
+.dashboard-job h2 {
+  font-size: 17px;
+  margin-bottom: 6px;
 }
-
-/* ==========================
-        LAPTOP
-========================== */
-
-@media(max-width:1200px){
-
-    #jobs-sections{
-        width:90%;
-        grid-template-columns:repeat(2,1fr);
-    }
-
+.dashboard-job .company {
+  color: #0a66c2;
+  font-size: 12px;
+  font-weight: 700;
 }
-
-/* ==========================
-        TABLET
-========================== */
-
-@media(max-width:768px){
-
-    #jobs{
-        padding:40px 15px;
-    }
-
-    #jobs-sections{
-        width:100%;
-        grid-template-columns:1fr;
-    }
-
-    .job-card{
-        padding:22px;
-    }
-
-    .job-card h3{
-        font-size:22px;
-    }
-
+.dashboard-job .meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
 }
-
-/* ==========================
-        MOBILE
-========================== */
-
-@media(max-width:480px){
-
-    .job-card{
-        padding:18px;
-    }
-
-    .job-card h3{
-        font-size:20px;
-    }
-
-    .job-card p{
-        font-size:14px;
-    }
-
-    .view-job-btn{
-        font-size:15px;
-    }
-
+.dashboard-job .meta span {
+  background: #f8fafc;
+  color: #64748b;
+  padding: 6px 8px;
+  border-radius: 7px;
+  font-size: 10px;
+}
+.dashboard-empty {
+  grid-column: 1/-1;
+  background: #fff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 16px;
+  padding: 65px;
+  text-align: center;
+}
+.dashboard-empty i {
+  font-size: 30px;
+  color: #93c5fd;
+}
+.dashboard-empty h2 {
+  font-size: 20px;
+  margin: 13px 0 6px;
+}
+.dashboard-empty p {
+  font-size: 12px;
+  color: #94a3b8;
+}
+@media (max-width: 900px) {
+  .jobs-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  #jobs {
+    padding: 35px 0;
+  }
+  .dashboard-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .dashboard-head h1 {
+    font-size: 32px;
+  }
+  .dashboard-action {
+    width: 100%;
+    text-align: center;
+  }
+  .jobs-section {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-empty {
+    padding: 45px 20px;
+  }
 }

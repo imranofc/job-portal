@@ -37,7 +37,7 @@ class Job(models.Model):
     company = models.CharField(max_length=100)
     posted_date = models.DateTimeField(auto_now_add=True)
     apply_type = models.CharField(max_length=10, choices=APPLY_TYPES, default='resume')
-    apply_link = models.CharField(max_length=500, null=True)
+    apply_link = models.CharField(max_length=500, null=True, blank=True)
     added_by = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     views = models.ManyToManyField(User, related_name='job_views', blank=True)
     status = models.CharField(max_length=10, choices=[('active', 'Active'), ('inactive', 'Inactive')], default='active')

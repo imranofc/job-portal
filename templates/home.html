@@ -1,38 +1,90 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
 <title>JobPortal - Home</title>
-<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block content %}
 
-<div id="hero-section">
-  <div id="left-content">
-    <h1>Find jobs more to grow your career</h1>
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow"
+      ><i class="fa-solid fa-sparkles"></i> Your next opportunity starts
+      here</span
+    >
+    <h1>Find work that moves your <span>career forward.</span></h1>
     <p>
-      Explore thousands of job opportunities with all the information you need.
-      It's your future. Come find it. Manage all your job application from start
-      to finish.
+      Discover opportunities that match your skills, goals, and ambitions.
+      Search smarter and take the next step with confidence.
     </p>
-    <button id="get-started-btn">Get Started</button>
+    <div class="hero-actions">
+      <button
+        id="get-started-btn"
+        class="primary-btn"
+        onclick="window.location.href = '/jobs/'"
+      >
+        Explore Jobs <i class="fa-solid fa-arrow-right"></i></button
+      ><button
+        class="secondary-btn"
+        onclick="window.location.href = '/register/'"
+      >
+        Create Account
+      </button>
+    </div>
+    <div class="hero-proof">
+      <div><strong>1000+</strong><span>Opportunities</span></div>
+      <div><strong>50+</strong><span>Categories</span></div>
+      <div><strong>24/7</strong><span>Access</span></div>
+    </div>
   </div>
-  <div id="right-content">
-    <img src="{% static 'img/man-with-laptop.png' %}" alt="Home Image" />
+  <div class="hero-visual">
+    <div class="glow"></div>
+    <div class="visual-card card-one">
+      <i class="fa-solid fa-briefcase"></i>
+      <div><strong>New opportunity</strong><span>Software Developer</span></div>
+      <b>Just now</b>
+    </div>
+    <img
+      src="{% static 'img/man-with-laptop.png' %}"
+      alt="Professional searching for jobs"
+    />
+    <div class="visual-card card-two">
+      <div class="mini-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <div><strong>Career match</strong><span>Great fit for you</span></div>
+    </div>
   </div>
-</div>
-
-<div id="post-job">
-  <h2>Post your job for millions of people to see</h2>
-  <button id="post-job-btn">Post a Job</button>
-</div>
-
-<div id="find-jobs">
-  <div id="fj-left-sec">
-    <h2>Find the right job or internship for you</h2>
+</section>
+<section class="post-banner">
+  <div>
+    <span class="eyebrow">For employers</span>
+    <h2>Have a role to fill?</h2>
+    <p>Reach the right candidates and grow your team faster.</p>
   </div>
-  <div id="fj-right-sec">
-    {% for category in categories %}
-    <button class="job-btn" onclick="window.location.href='/jobs/?category={{ category.name|urlencode }}'">{{category.name}}</button>
-    {% endfor %}
-    <button class="show-more-btn" onclick="window.location.href='/jobs/'">Show more <i class="fa-solid fa-chevron-down"></i>
-    </button>
+  <button
+    id="post-job-btn"
+    class="light-btn"
+    onclick="window.location.href = '/post-job/'"
+  >
+    Post a Job <i class="fa-solid fa-arrow-right"></i>
+  </button>
+</section>
+<section class="categories">
+  <div class="section-heading">
+    <div>
+      <span class="eyebrow">Explore opportunities</span>
+      <h2>Find the right role for you</h2>
+    </div>
+    <a href="/jobs/">View all jobs <i class="fa-solid fa-arrow-right"></i></a>
   </div>
-</div>
-
+  <div class="category-grid">
+    {% for category in categories %}<button
+      class="category-card"
+      onclick="window.location.href='/jobs/?category={{ category.name|urlencode }}'"
+    >
+      <span class="category-icon"><i class="fa-solid fa-layer-group"></i></span
+      ><span>{{ category.name }}</span
+      ><i class="fa-solid fa-arrow-up-right-from-square"></i></button
+    >{% endfor %}
+  </div>
+</section>
 {% endblock %}

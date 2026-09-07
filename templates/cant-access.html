@@ -1,13 +1,25 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<title>JobPortal - Home</title>
-<link rel="stylesheet" href="{% static 'css/cant-access.css' %}" />
-
-<div id="cant-access">
-    <div id="cant-access-box">
-        <h2>You don't have permisson to access this page.</h2>
-        <button id="dashboard-btn" class="btn">Dashboard</button>
-        <button id="logout-btn" class="btn" onclick="location.href='/logout'">Logout</button>
+{% extends 'base.html' %}{% load static %}{% block head %}<title>
+  JobPortal - Access Denied</title
+><link rel="stylesheet" href="{% static 'css/cant-access.css' %}" />{% endblock
+%}{% block content %}
+<section id="cant-access">
+  <div id="cant-access-box" class="access-box">
+    <div class="access-icon"><i class="fa-solid fa-lock"></i></div>
+    <h1>Access restricted</h1>
+    <p>
+      You don't have permission to access this page with your current account.
+    </p>
+    <div class="access-actions">
+      <button id="dashboard-btn" class="btn" onclick="location.href = '/'">
+        Go Home</button
+      ><button
+        id="logout-btn"
+        class="btn secondary"
+        onclick="location.href = '/logout'"
+      >
+        Logout
+      </button>
     </div>
-</div>
-
+  </div>
+</section>
 {% endblock %}

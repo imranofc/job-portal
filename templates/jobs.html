@@ -1,143 +1,132 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
-
-<title>JobPortal - Jobs</title>
-
-<link rel="stylesheet" href="{% static 'css/jobs.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<!-- =========================
-        FILTER BUTTON
-========================= -->
-
-<div id="filter-toggle">
-    <i class="fa-solid fa-filter"></i>
-    <span>Filter</span>
-</div>
-
-<!-- =========================
-        FILTER
-========================= -->
-
-<div id="filter">
-
-    <div id="filter-close">
-        <i class="fa-solid fa-circle-xmark"></i>
+{% extends 'base.html' %}{% load static %}{% block head %}<title>
+  JobPortal - Find Jobs</title
+><link rel="stylesheet" href="{% static 'css/jobs.css' %}" />{% endblock %}{%
+block content %}
+<section class="jobs-page">
+  <div class="jobs-title">
+    <div>
+      <span class="eyebrow">Opportunities</span>
+      <h1>Find your next job</h1>
+      <p>Search roles that match where you want your career to go.</p>
     </div>
-
-    <form method="GET" action="{% url 'jobs' %}" class="filter-form">
-
+    <div class="result-pill">
+      <i class="fa-solid fa-briefcase"></i>{{ jobs|length }} jobs
+    </div>
+  </div>
+  <div class="jobs-layout">
+    <aside id="filter">
+      <div class="filter-top">
+        <div><span>Filters</span><small>Refine results</small></div>
+        <button id="filter-close" type="button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form method="GET" action="{% url 'jobs' %}" class="filter-form">
         <div class="filter-group">
-            <label>Location</label>
-            <input type="text"
-                   name="location"
-                   placeholder="Enter Location">
+          <label>Location</label>
+          <div class="field-icon">
+            <i class="fa-solid fa-location-dot"></i
+            ><input type="text" name="location" placeholder="e.g. Delhi" />
+          </div>
         </div>
-
         <div class="filter-group">
-
-            <label>Job Type</label>
-
-            <select name="job_type">
-
-                <option value="">All Jobs</option>
-                {% for job_type in job_types %}
-                <option value="{{job_type.name}}"
-                    {% if request.GET.job_type == job_type.name %}selected{% endif %}>
-                    {{job_type.name}}
-                </option>
-                {% endfor %}
-
-            </select>
-
+          <label>Job Type</label
+          ><select name="job_type">
+            <option value="">All job types</option>
+            {% for job_type in job_types %}
+            <option
+              value="{{job_type.name}}"
+              {%
+              if
+              request.GET.job_type=""
+              ="job_type.name"
+              %}selected{%
+              endif
+              %}
+            >
+              {{job_type.name}}
+            </option>
+            {% endfor %}
+          </select>
         </div>
-
         <div class="filter-group">
-
-            <label>Category</label>
-
-            <select name="category">
-
-                <option value="">All Categories</option>
-
-                {% for category in categories %}
-
-                <option value="{{ category.name }}"
-                    {% if request.GET.category == category.name %}
-                    selected
-                    {% endif %}>
-                    {{ category.name }}
-                </option>
-
-                {% endfor %}
-
-            </select>
-
+          <label>Category</label
+          ><select name="category">
+            <option value="">All categories</option>
+            {% for category in categories %}
+            <option
+              value="{{ category.name }}"
+              {%
+              if
+              request.GET.category=""
+              ="category.name"
+              %}selected{%
+              endif
+              %}
+            >
+              {{ category.name }}
+            </option>
+            {% endfor %}
+          </select>
         </div>
-
-        <div class="filter-btn">
-            <button type="submit">Apply Filters</button>
-        </div>
-
-    </form>
-
-</div>
-
-<!-- =========================
-        JOBS
-========================= -->
-
-<div id="jobs">
-
-    <div id="jobs-sections">
-
+        <button class="filter-submit" type="submit">
+          Apply Filters <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+    </aside>
+    <div class="jobs-results">
+      <button id="filter-toggle" type="button">
+        <i class="fa-solid fa-sliders"></i> Filters
+      </button>
+      <div class="results-head">
+        <span>Available positions</span><span>Newest first</span>
+      </div>
+      <div id="jobs-sections">
         {% for job in jobs %}
-
-        <div class="job-card"
-             onclick="window.location.href='{% url 'job' job.id %}'">
-
-            <h3>{{ job.title }}</h3>
-
-            <p><strong>Company:</strong> {{ job.company }}</p>
-
-            <p><strong>Location:</strong> {{ job.location }}</p>
-
-            <p><strong>Category:</strong> {{ job.category }}</p>
-
-        </div>
-
+        <article
+          class="job-card"
+          onclick="window.location.href='{% url 'job' job.id %}'"
+        >
+          <div class="job-card-top">
+            <div class="company-icon"><i class="fa-solid fa-building"></i></div>
+            <span class="job-arrow"
+              ><i class="fa-solid fa-arrow-up-right-from-square"></i
+            ></span>
+          </div>
+          <div class="job-main">
+            <h2>{{ job.title }}</h2>
+            <p class="company">{{ job.company }}</p>
+            <div class="job-meta">
+              <span
+                ><i class="fa-solid fa-location-dot"></i>{{ job.location
+                }}</span
+              ><span
+                ><i class="fa-solid fa-layer-group"></i>{{ job.category }}</span
+              >
+            </div>
+          </div>
+          <div class="job-card-bottom">
+            <span>View details</span><i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </article>
         {% empty %}
-
-        <h2>No Jobs Found.</h2>
-
+        <div class="empty-state">
+          <div><i class="fa-solid fa-magnifying-glass"></i></div>
+          <h2>No jobs found</h2>
+          <p>Try changing your filters or searching for another location.</p>
+        </div>
         {% endfor %}
-
+      </div>
     </div>
-
-</div>
-
+  </div>
+</section>
 <script>
-
-const filterToggle=document.getElementById("filter-toggle");
-const filter=document.getElementById("filter");
-const filterClose=document.getElementById("filter-close");
-
-filterToggle.addEventListener("click",function(){
-
-    filter.classList.add("active");
-    filterToggle.style.display="none";
-
-});
-
-filterClose.addEventListener("click",function(){
-
-    filter.classList.remove("active");
-    filterToggle.style.display="flex";
-
-});
-
+  const filterToggle = document.getElementById("filter-toggle"),
+    filter = document.getElementById("filter"),
+    filterClose = document.getElementById("filter-close");
+  filterToggle?.addEventListener("click", () => filter.classList.add("active"));
+  filterClose?.addEventListener("click", () =>
+    filter.classList.remove("active"),
+  );
 </script>
-
 {% endblock %}

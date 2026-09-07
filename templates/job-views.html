@@ -1,34 +1,33 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
-
-<link rel="stylesheet" href="{% static 'css/job-views.css' %}" />
-
-<div class="container">
-
-    <h2>People who viewed this job</h2>
-
-    {% if viewers %}
-
-        {% for user in viewers %}
-
-        <div class="card">
-
-            <h3>{{ user.first_name }}</h3>
-
-            <p>{{ user.email }}</p>
-
+{% extends 'base.html' %}{% load static %}{% block head %}<title>
+  JobPortal - Job Views</title
+><link rel="stylesheet" href="{% static 'css/job-views.css' %}" />{% endblock
+%}{% block content %}
+<section id="data-page">
+  <div class="data-head">
+    <span class="eyebrow">Candidate activity</span>
+    <h1>People who viewed this job</h1>
+    <p>See the people who have shown interest in your listing.</p>
+  </div>
+  <div class="data-list">
+    {% if viewers %}{% for user in viewers %}
+    <article class="data-card">
+      <div class="person">
+        <div class="avatar">{{ user.first_name|first|upper }}</div>
+        <div>
+          <h2>{{ user.first_name }}</h2>
+          <p>{{ user.email }}</p>
         </div>
-
-        {% endfor %}
-
-    {% else %}
-
-        <p>No views yet.</p>
-
+      </div>
+      <div class="data-meta">
+        <span><i class="fa-solid fa-eye"></i> Job view</span>
+      </div>
+    </article>
+    {% endfor %}{% else %}
+    <div class="empty-data">
+      <i class="fa-solid fa-eye-slash"></i>
+      <p>No views yet.</p>
+    </div>
     {% endif %}
-
-</div>
-
+  </div>
+</section>
 {% endblock %}

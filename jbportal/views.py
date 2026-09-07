@@ -44,9 +44,9 @@ def login(request):
 def register(request):
     if request.user.is_authenticated:
         if request.user.profile.role == 'job_seeker':
-            return render(request, 'job_seeker_dashboard.html')
+            return redirect("jobs")
         elif request.user.profile.role == 'employer':
-            return render(request, 'employer_dashboard.html')
+            return redirect("employer_dashboard")
     if request.method == 'POST':
         name =request.POST.get('name')
         email = request.POST.get('email')

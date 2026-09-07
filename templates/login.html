@@ -1,41 +1,65 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<title>JobPortal - Home</title>
-<link rel="stylesheet" href="{% static 'css/login.css' %}" />
-
-<div class="login-container">
-  <div class="login-box">
-    <h2>Sign in</h2>
-
-    <p class="signup">
-      Don't have an account?
-      <a href="#">Register</a>
-    </p>
-
-    <form action="" method="POST">
-      {% csrf_token %}
-      {% if messages %}
-        {% for message in messages %}
-          <div class="alert-message">
-            {{ message }}
+{% extends 'base.html' %} {% load static %} {% block head %}<title>JobPortal - Sign In</title>
+<link rel="stylesheet" href="{% static 'css/login.css' %}">{% endblock %}{% block content %}
+<div class="login-page">
+  <div class="login-card">
+    <section class="login-intro">
+      <a href="/" class="intro-logo"><img src="{% static 'img/logo.png' %}" alt="JobPortal"></a>
+      <div class="intro-content">
+        <span class="intro-label">YOUR NEXT OPPORTUNITY</span>
+        <h1>Find work that<br><span>moves you forward.</span></h1>
+        <p>Discover opportunities that match your skills, connect with employers, and take the next step in your career.
+        </p>
+        <div class="intro-features">
+          <div class="feature">
+            <span class="feature-icon"><i class="fa-solid fa-briefcase"></i></span>
+            <div><strong>Find the right job</strong><small>Explore opportunities built around your skills.</small></div>
           </div>
-        {% endfor %}
-      {% endif %}
-      <div class="input-box">
-        <label>Email</label>
-        <input type="email" name="email" placeholder="Enter your email" required />
+          <div class="feature">
+            <span class="feature-icon"><i class="fa-solid fa-bolt"></i></span>
+            <div><strong>Apply with confidence</strong><small>Keep your career search simple and focused.</small></div>
+          </div>
+          <div class="feature">
+            <span class="feature-icon"><i class="fa-solid fa-building"></i></span>
+            <div><strong>Connect with employers</strong><small>Get closer to companies looking for talent.</small></div>
+          </div>
+        </div>
       </div>
-
-      <div class="input-box">
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Enter your password" required />
+      <div class="intro-footer"><span><i class="fa-solid fa-shield-halved"></i> Your career journey starts here</span>
       </div>
-
-      <div class="forgot">
-        <a href="#">Forgot password?</a>
+    </section>
+    <section class="login-form-section">
+      <div class="login-form-wrap">
+        <div class="form-heading">
+          <span class="form-icon"><i class="fa-solid fa-arrow-right-to-bracket"></i></span>
+          <div><span class="form-eyebrow">WELCOME BACK</span>
+            <h2>Sign in to your account</h2>
+          </div>
+        </div>
+        <p class="signup">Don't have an account? <a href="/register">Create one</a></p>
+        <form action="" method="POST">
+          {% csrf_token %}
+          {% if messages %}
+          {% for message in messages %}
+          <div class="alert-message"><i class="fa-solid fa-circle-exclamation"></i><span>{{ message }}</span></div>
+          {% endfor %}
+          {% endif %}
+          <div class="input-box">
+            <label for="email">Email address</label>
+            <div class="input-wrap"><i class="fa-regular fa-envelope"></i><input id="email" type="email" name="email"
+                placeholder="you@example.com" autocomplete="email" required></div>
+          </div>
+          <div class="input-box">
+            <div class="label-row"><label for="password">Password</label><a href="#">Forgot password?</a></div>
+            <div class="input-wrap"><i class="fa-solid fa-lock"></i><input id="password" type="password" name="password"
+                placeholder="Enter your password" autocomplete="current-password" required><button type="button"
+                class="password-toggle" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div>
+          </div>
+          <button type="submit" class="login-btn"><span>Sign In</span><i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+        <div class="form-note"><i class="fa-solid fa-lock"></i><span>Your information is securely protected.</span>
+        </div>
       </div>
-
-      <button type="submit" class="login-btn">Sign In</button>
-    </form>
+    </section>
   </div>
 </div>
 {% endblock %}

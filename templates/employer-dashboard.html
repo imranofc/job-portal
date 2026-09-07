@@ -1,23 +1,38 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
-
-<title>Apply Job</title>
-
-<link rel="stylesheet" href="{% static 'css/employer-dashboard.css' %}">
-
-
-<div id="jobs">
-    <div id="jobs-sections">
-        {% for job in jobs %}
-            <div class="job-card" onclick="window.location.href='{% url 'manage_job' job.id %}'">
-                <h3>{{ job.title }}</h3>
-                <p><strong>Company:</strong> {{ job.company }}</p>
-                <p><strong>Location:</strong> {{ job.location }}</p>
-            </div>
-        {% endfor %}
+{% extends 'base.html' %}{% load static %}{% block head %}<title>
+  JobPortal - Dashboard</title
+><link rel="stylesheet" href="{% static 'css/employer-dashboard.css' %}" />{%
+endblock %}{% block content %}
+<section id="jobs">
+  <div class="dashboard-head">
+    <div>
+      <span class="eyebrow">Employer workspace</span>
+      <h1>Your job listings</h1>
+      <p>Manage your open opportunities and track candidate interest.</p>
     </div>
-</div>
-
+    <a class="dashboard-action" href="/post-job/"
+      ><i class="fa-solid fa-plus"></i> Post a Job</a
+    >
+  </div>
+  <div class="jobs-section">
+    {% for job in jobs %}
+    <article
+      class="dashboard-job"
+      onclick="window.location.href='{% url 'manage_job' job.id %}'"
+    >
+      <div class="dash-icon"><i class="fa-solid fa-briefcase"></i></div>
+      <h2>{{ job.title }}</h2>
+      <p class="company">{{ job.company }}</p>
+      <div class="meta">
+        <span><i class="fa-solid fa-location-dot"></i> {{ job.location }}</span>
+      </div>
+    </article>
+    {% empty %}
+    <div class="dashboard-empty">
+      <i class="fa-solid fa-briefcase"></i>
+      <h2>No jobs posted yet</h2>
+      <p>Create your first listing to start reaching candidates.</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}

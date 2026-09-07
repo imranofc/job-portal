@@ -1,0 +1,68 @@
+#cant-access {
+  min-height: calc(100vh - 76px);
+  display: grid;
+  place-items: center;
+  padding: 35px 20px;
+  background: #f8fafc;
+}
+.access-box {
+  width: min(520px, 100%);
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 42px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+.access-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  border-radius: 16px;
+  background: #fff1f2;
+  color: #e11d48;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+.access-box h1 {
+  font-size: 25px;
+  letter-spacing: -0.03em;
+}
+.access-box p {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 9px auto 25px;
+  max-width: 380px;
+}
+.access-actions {
+  display: flex;
+  gap: 10px;
+}
+.access-actions .btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 9px;
+  border: 0;
+  background: #0a66c2;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+}
+.access-actions .btn.secondary {
+  background: #f1f5f9;
+  color: #334155;
+}
+.access-actions .btn:hover {
+  background: #004182;
+  color: #fff;
+}
+@media (max-width: 500px) {
+  .access-box {
+    padding: 30px 20px;
+  }
+  .access-actions {
+    flex-direction: column;
+  }
+}
