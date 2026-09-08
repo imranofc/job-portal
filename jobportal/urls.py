@@ -35,6 +35,8 @@ urlpatterns = [
     path('logout/', logout, name='logout'),
     path('job/<int:id>/views/', job_views, name='job_views'),
     path('job/<int:id>/applications/', job_applications, name='job_applications'),
+    path('forgot-password/', forgot_password, name='forgot_password'),
+    path('reset-password/<uidb64>/<token>/', reset_password, name='reset_password'),
 ]
 
 if settings.DEBUG:

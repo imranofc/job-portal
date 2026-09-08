@@ -7,6 +7,14 @@ from .models import *
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.contrib import messages
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.urls import reverse
+from django.contrib.auth.forms import SetPasswordForm
+from django.utils.http import urlsafe_base64_decode
 
 #home page
 def home(request):
@@ -287,3 +295,64 @@ def job_applications(request, id):
         'job': job,
         'applications': applications
     })
+
+#forgot password page
+
+def forgot_password(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    if request.method == 'POST':
+        email = request.POST.get('email', '').strip()
+
+        if not email:
+            messages.error(request, 'Please enter your email address.')
+            return redirect('forgot_password')
+
+        user = User.objects.filter(email__iexact=email, is_active=True).first()
+
+        if user:
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            token = default_token_generator.make_token(user)
+            reset_url = request.build_absolute_uri(
+                reverse('reset_password', kwargs={'uidb64': uid, 'token': token})
+            )
+
+            send_mail(
+                'JobPortal - Reset Your Password',
+                f'Click the link below to reset your password:\n\n{reset_url}\n\nThis link will expire when your password is changed.',
+                None,
+                [user.email],
+                fail_silently=False,
+            )
+
+        messages.success(
+            request,
+            'If an account exists with this email, a password reset link has been sent.'
+        )
+        return redirect('forgot_password')
+
+    return render(request, 'forgot-password.html')
+
+def reset_password(request, uidb64, token):
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is None or not default_token_generator.check_token(user, token):
+        messages.error(request, 'This password reset link is invalid or has expired.')
+        return redirect('forgot_password')
+
+    form = SetPasswordForm(user, request.POST or None)
+
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        messages.success(request, 'Your password has been reset successfully.')
+        return redirect('login')
+
+    return render(request, 'reset-password.html', {'form': form})

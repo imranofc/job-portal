@@ -143,3 +143,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIR = {
     os.path.join(BASE_DIR, "public/static/"),
 }
+
+
+#for email
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'noreply@jobportal.com'
