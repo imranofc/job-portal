@@ -7,7 +7,6 @@ from .models import *
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.contrib import messages
-from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.utils.http import urlsafe_base64_encode
