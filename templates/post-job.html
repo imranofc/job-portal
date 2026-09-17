@@ -1,7 +1,6 @@
 {% extends 'base.html' %}{% load static %}{% block head %}<title>
   JobPortal - Post Job</title
-><link rel="stylesheet" href="{% static 'css/post-job.css' %}" />{% endblock
-%}{% block content %}
+><link rel="stylesheet" href="{% static 'css/post-job.css' %}" />{% endblock%}{% block content %}
 <div class="messages">
   {% if messages %}{% for message in messages %}
   <div class="message {{ message.tags }}">{{ message }}</div>
